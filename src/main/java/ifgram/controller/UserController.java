@@ -1,20 +1,26 @@
 package ifgram.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-    @RestController
-    @RequestMapping("users")
+@RestController
+    @RequestMapping("user")
 
     public class UserController {
 
         @GetMapping
-
         public String getUser() {
-
-            return "get user was called";
+            return "chamei o endpoint como um GET!";
 
         }
-}
+
+        @PostMapping
+        public String postUser(){
+            return "chamei o endpoint como um POST!";
+        }
+
+        @DeleteMapping
+        public String deleteUser(){
+            return "chamei o endpoint como um DELETE!";
+        }
+    }
 
