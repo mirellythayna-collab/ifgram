@@ -6,15 +6,15 @@ import jakarta.validation.constraints.Size;
 
 import javax.swing.*;
 
-public class UserRequest {
-    @Email
-    String email;
-    @Size(min = 3)
-    @NotNull
-    String nome;
+public record UserRequest (
+        @Email
+        String email,
+        @Size(min = 3)
+        @NotNull
+        String nome,
 
-    @Size(min = 4)
-    @NotNull
-    Spring senha;
-
+        @Size(min = 4)
+        @NotNull
+        Spring senha
+) {
 }

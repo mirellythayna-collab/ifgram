@@ -1,11 +1,11 @@
 package ifgram.service;
+
 import ifgram.dto.UserRequest;
 import ifgram.dto.UserResponse;
+import ifgram.model.User;
 import ifgram.repository.UserRepository;
-import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.Email;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -18,12 +18,12 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse cria(UserRequest request) {
+    public UserResponse cria(UserRequest request) throws Exception {
         // regra de negócios: o e-mail não pode repetir
         if (repository.existsByEmail(request.email())) {
-            throw new EmailDuplicadoexception(request.email());
+            throw new Exception(request.email());
         }
-        user salvo = repository.save(new User(request.nome(), request.email()));
+        User salvo = repository.save(new User(request.nome(), request.email()));
         return UserResponse.from(salvo);
     }
 }
