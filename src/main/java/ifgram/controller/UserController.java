@@ -27,6 +27,12 @@ public class UserController {
         return userResponse;
     }
 
+    @PutMapping
+    public UserResponse putUser(UserRequest request) throws Exception{
+         UserResponse userResponse = service.atualizarUsuario(request);
+         return userResponse;
+    }
+
     @DeleteMapping
     public String deleteUser(){
         return "chamei o endpoint como um DELETE!";

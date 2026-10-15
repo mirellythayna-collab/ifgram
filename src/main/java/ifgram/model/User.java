@@ -2,6 +2,8 @@ package ifgram.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuarios")
@@ -32,5 +34,11 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setNome() {
+    }
+
+    public void setNome(@Size(min = 3) @NotNull String nome) {
     }
 }
