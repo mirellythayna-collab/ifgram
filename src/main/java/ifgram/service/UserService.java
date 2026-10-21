@@ -55,5 +55,17 @@ public class UserService {
 
         return UserResponse.from(usuarioSalvo);
     }
-}
 
+    public void  deleteUsuario(UserRequest request) throws Exception {
+        Optional<User> usuario = repository.findByEmail(request.email());
+        if (usuario.isEmpty()) {
+            throw new Exception("Usuário não encrontrado!");
+        }
+
+        User usuarioDeletar = usuario.get();
+        usuarioDeletar.setNome(request.nome());
+        repository.delete(usuarioDeletar);
+
+
+    }
+}
