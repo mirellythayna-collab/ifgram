@@ -34,8 +34,7 @@ public class UserController {
     }
 
     @DeleteMapping
-    public String deleteUser(){
-        return "chamei o endpoint como um DELETE!";
+    public String deleteUser(){return "chamei o endpoint como um DELETE!";
     }
 
 }
